@@ -3,47 +3,28 @@
  */
 package group.lab;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) throws IOException {
-        String filePath = args[0];
-        String savPath = args[1];
-        String cmd = args[2];
 
-
-       if(args.length == 2){
-           BitMap.DelImg(filePath);
+       if(args[1].equals("delete")){
+           BitMap.DelImg(args[0]);
            return ;
        }
-       if(cmd== "shrink"){
-           BufferedImage file = BitMap.bitMapImgUpload(filePath);
+
+       if(args[2].equals("shrink")){
+           BufferedImage file = BitMap.bitMapImgUpload(args[0]);
            BufferedImage filer = BitMap.CopImg(file);
-           System.out.println(savPath);
-           BitMap.saveImge(filer,savPath);
+           BitMap.saveImge(filer, args[1]);
             return ;
        }
-       if(cmd == "bingo"){
-           System.out.println(savPath);
-//           BufferedImage file = BitMap.bitMapImgUpload(args[0]);
-//           BufferedImage filer = BitMap.changeColorImg(file);
-//           BitMap.saveImge(filer,args[1]);
-           return ;
+       if(args[2].equals("bingo")){
+           BufferedImage file = BitMap.bitMapImgUpload(args[0]);
+           BufferedImage filer = BitMap.changeColorImg(file);
+           BitMap.saveImge(filer,args[1]);
        }
-
-
-
-
-
-
-
-
     }
 }
