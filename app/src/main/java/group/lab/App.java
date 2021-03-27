@@ -14,12 +14,34 @@ public class App {
     }
 
     public static void main(String[] args) throws IOException {
+        String filePath = args[0];
+        String savPath = args[1];
+        String cmd = args[2];
 
-       String imagepath = args[0];
-       BufferedImage uplFile =  BitMap.bitMapImgUpload(imagepath);
-//       uplFile = BitMap.changeColorImg(uplFile);
-       ImageIO.write(uplFile,"BMP", new File(imagepath));
-       System.out.println("filr saved");
+
+       if(args.length == 2){
+           BitMap.DelImg(filePath);
+           return ;
+       }
+       if(cmd== "shrink"){
+           BufferedImage file = BitMap.bitMapImgUpload(filePath);
+           BufferedImage filer = BitMap.CopImg(file);
+           System.out.println(savPath);
+           BitMap.saveImge(filer,savPath);
+            return ;
+       }
+       if(cmd == "bingo"){
+           System.out.println(savPath);
+//           BufferedImage file = BitMap.bitMapImgUpload(args[0]);
+//           BufferedImage filer = BitMap.changeColorImg(file);
+//           BitMap.saveImge(filer,args[1]);
+           return ;
+       }
+
+
+
+
+
 
 
 
