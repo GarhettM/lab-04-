@@ -1,11 +1,7 @@
 package group.lab;
 
-import com.sun.imageio.plugins.common.ImageUtil;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -14,12 +10,8 @@ public class BitMap {
     public static BufferedImage bitMapImgUpload(String img_path){
 
         try {
-//            File img_file = new File(imgpath);
-//            String imgpath ;
-
             BufferedImage img = ImageIO.read(new File(img_path));
             return img;
-
             }
             catch (IOException e){
                 System.out.println("did Not work");
@@ -29,9 +21,9 @@ public class BitMap {
             }
 
     public static void saveImge(BufferedImage file, String savPath) throws IOException {
-//        ImageIO.write(file,"BMP", new File(savPath));
+        ImageIO.write(file,"BMP", new File(savPath));
         System.out.println(savPath);
-//        System.out.println("filr saved");
+        System.out.println("File Saved");
     }
 
     public static BufferedImage changeColorImg(BufferedImage img_file) {
@@ -49,8 +41,8 @@ public class BitMap {
 
         }
         return img_file;
-
     }
+
 // https://www.baeldung.com/java-resize-image
     public static BufferedImage CopImg(BufferedImage img_file) throws IOException{
         BufferedImage imgResize = new BufferedImage(100, 100, BufferedImage.TYPE_INT_RGB);
@@ -58,23 +50,17 @@ public class BitMap {
         graphics2D.drawImage(img_file,0,0,100,100, null);
         graphics2D.dispose();
         return imgResize;
-
-
-
     }
-
 
     public static void DelImg(String fileImg){
         File imgObj = new File(fileImg);
 
         if (imgObj.delete()) {
-            System.out.println("the deleted file: " + imgObj.getName());
+            System.out.println("The deleted file: " + imgObj.getName());
         }
         else {
-            System.out.println("it failed ti delete the file");
-
+            System.out.println("Failed to delete file");
         }
-
     }
 
 
