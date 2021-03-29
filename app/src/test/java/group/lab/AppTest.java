@@ -4,8 +4,57 @@
 package group.lab;
 
 import org.junit.Test;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class AppTest {
+    @Test
+    public void imgfilereadTest() throws IOException {
+        String[] args = {"/home/owner/codefellows/group-lab/app/src/main/resources/tigger.bmp", "/home/owner/codefellows/group-lab/app/src/main/resources/test.bmp", "shrink"};
+        App.main(args);
+        File tempImgFile = new File("/home/owner/codefellows/group-lab/app/src/main/resources/test.bmp");
+        boolean exists = tempImgFile.exists();
+
+        assertTrue(String.valueOf(true),exists);
+
+
+    }
+
+    @Test
+    public void imgfilereadbingoTest() throws IOException {
+        String[] args = {"/home/owner/codefellows/group-lab/app/src/main/resources/tigger.bmp", "/home/owner/codefellows/group-lab/app/src/main/resources/test2.bmp", "bingo"};
+        App.main(args);
+        File tempImgFile = new File("/home/owner/codefellows/group-lab/app/src/main/resources/test2.bmp");
+        boolean exists = tempImgFile.exists();
+
+        assertTrue(String.valueOf(true),exists);
+
+
+    }
+
+    @Test
+    public void imgdelTest() throws IOException{
+
+        String[] args = { "/home/owner/codefellows/group-lab/app/src/main/resources/test.bmp", "delete"};
+        String[] args2 = { "/home/owner/codefellows/group-lab/app/src/main/resources/test2.bmp", "delete"};
+        App.main(args);
+        App.main(args2);
+        File tempImgFile = new File("/home/owner/codefellows/group-lab/app/src/main/resources/test.bmp");
+        File tempImgFile2 = new File("/home/owner/codefellows/group-lab/app/src/main/resources/test2.bmp");
+
+        boolean exists = tempImgFile.exists();
+        boolean exists2 = tempImgFile2.exists();
+        assertFalse(String.valueOf(false),exists);
+        assertFalse(String.valueOf(false),exists2);
+
+    }
+
+
+
 
 }
